@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#061326">
     <meta name="description" content="mire mire mire ">
+    <meta property="og:title" content="𓃠">
+    <meta property="og:description" content="💙">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cinqtlz.github.io/B-A-E/">
     <title>💙</title>
 
     <style>
@@ -193,54 +197,24 @@
             pointer-events: none;
         }
 
-        /* botón de música */
+        /* reproductor de spotify */
 
         .music-player {
             position: absolute;
             z-index: 5;
-            top: 25px;
+            top: 18px;
             left: 50%;
             transform: translateX(-50%);
+            width: 320px;
+            max-width: calc(100% - 32px);
         }
-
-        .music-player button {
-            display: inline-block;
-            padding: 10px 18px;
-            border: 1px solid rgba(120, 205, 255, .35);
-            border-radius: 30px;
-            background: rgba(8, 35, 65, .65);
-            color: #c9edff;
-            font-size: 12px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 0 18px rgba(40, 160, 255, .12);
-            transition: .3s ease;
-            white-space: nowrap;
-        }
-
-        .music-player button:hover {
-            background: rgba(20, 75, 120, .8);
-            border-color: rgba(120, 205, 255, .7);
-            box-shadow: 0 0 22px rgba(40, 160, 255, .25);
-            transform: translateY(-2px);
-        }
-
-        .music-player button:focus-visible {
-            outline: 2px solid #a8e5ff;
-            outline-offset: 4px;
-        }
-
-        /* reproductor invisible */
 
         .music-player iframe {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
+            display: block;
+            width: 100%;
+            height: 152px;
             border: 0;
+            border-radius: 12px;
         }
 
         /* celulares */
@@ -263,12 +237,8 @@
             }
 
             .music-player {
-                top: 20px;
-            }
-
-            .music-player button {
-                padding: 9px 15px;
-                font-size: 11px;
+                top: 14px;
+                width: 300px;
             }
         }
 
@@ -287,6 +257,14 @@
 
             .hint {
                 bottom: 7px;
+            }
+
+            .music-player {
+                top: 8px;
+            }
+
+            .music-player iframe {
+                height: 152px;
             }
         }
 
@@ -322,19 +300,12 @@
         <!-- música -->
 
         <div class="music-player">
-
-            <button id="musicButton" type="button">
-                ♫ musiquita 
-            </button>
-
             <iframe
-                id="youtubeMusic"
-                src="about:blank"
-                title="Nuestra canción"
-                allow="autoplay; encrypted-media"
-                referrerpolicy="strict-origin-when-cross-origin">
+                src="https://open.spotify.com/embed/track/6Er8Fz6fuZNi5cvwQjv1ya?utm_source=generator"
+                title="Nuestra canción en Spotify"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
             </iframe>
-
         </div>
 
     </main>
@@ -723,34 +694,6 @@
         canvas.addEventListener("pointerup", stopDragging);
         canvas.addEventListener("pointercancel", stopDragging);
         canvas.addEventListener("lostpointercapture", stopDragging);
-
-
-        /* reproductor de música */
-
-        const musicButton = document.getElementById("musicButton");
-        const youtubeMusic = document.getElementById("youtubeMusic");
-
-        const YOUTUBE_VIDEO_ID = "4-6JVJ1oXRM";
-
-        let musicPlaying = false;
-
-        musicButton.addEventListener("click", () => {
-
-            if (!musicPlaying) {
-                youtubeMusic.src =
-                    `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&playsinline=1&rel=0`;
-
-                musicButton.textContent = "♫ detener musica";
-                musicPlaying = true;
-
-            } else {
-                youtubeMusic.src = "about:blank";
-
-                musicButton.textContent = "♫ musiquita";
-                musicPlaying = false;
-            }
-
-        });
 
 
         /* iniciar animación */
